@@ -1,0 +1,68 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: ag-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: ag-mybatis-generator
+          uri: lb://ag-mybatis-generator
+          predicates:
+          - Path=/api/generator/**
+          filters:
+          # 进行token过滤
+          #- TokenAuthenticationFilter
+          - StripPrefix=2
+
+        - id: ag-auth
+          uri: lb://ag-auth
+          predicates:
+          - Path=/api/auth/**
+          filters:
+          # 进行token过滤
+          #- TokenAuthenticationFilter
+          - StripPrefix=2
+
+gate:
+  ignore:
+    startWith: /auth/jwt
+
+jwt:
+  token-header: access-token
+  pub-key:
+#    path: /Users/ace/git/ag-parent/ag-zuul/src/main/resources/jwt/pub.key
+    path: D:\workspace-idea\ag-parent\ag-gateway\src\main\resources\jwt\pub.key
+#
+#auth:
+#  client:
+#    id: ag-gateway
+#    secret: 123456
+#    token-header: x-client-token
+
+
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+#开启spring-Cloud-gateway的日志级别为debug，方便debug调试
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

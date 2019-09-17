@@ -1,0 +1,58 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: ag-auth
+
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/ag_gate?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+mybatis:
+    basepackage: com.github.wxiaoqi.learning.auth.mapper
+    xmlLocation: classpath:mapper/**/*.xml
+
+jwt:
+  expire: 3600
+  pri-key:
+#    path: /Users/ace/git/ag-parent/ag-auth/src/main/resources/jwt/pri.key
+    path: D:\workspace-idea\ag-parent\ag-auth\src\main\resources\jwt\pri.key
+  pub-key:
+#    path: /Users/ace/git/ag-parent/ag-auth/src/main/resources/jwt/pub.key
+    path: D:\workspace-idea\ag-parent\ag-auth\src\main\resources\jwt\pub.key
+
+client:
+  expire: 3600
+  pri-key:
+#    path: /Users/ace/git/ag-parent/ag-auth/src/main/resources/client/pri.key
+    path: D:\workspace-idea\ag-parent\ag-auth\src\main\resources\client\pri.key
+  pub-key:
+    path: D:\workspace-idea\ag-parent\ag-auth\src\main\resources\client\pub.key
+
+
+
+

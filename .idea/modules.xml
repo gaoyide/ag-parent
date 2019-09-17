@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ag-auth/ag-auth.iml" filepath="$PROJECT_DIR$/ag-auth/ag-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag-common/ag-common.iml" filepath="$PROJECT_DIR$/ag-common/ag-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag-gateway/ag-gateway.iml" filepath="$PROJECT_DIR$/ag-gateway/ag-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag-mybatis-generator/ag-mybatis-generator.iml" filepath="$PROJECT_DIR$/ag-mybatis-generator/ag-mybatis-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag-parent.iml" filepath="$PROJECT_DIR$/ag-parent.iml" />
+    </modules>
+  </component>
+</project>

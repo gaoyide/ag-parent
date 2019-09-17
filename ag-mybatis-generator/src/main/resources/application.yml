@@ -1,0 +1,54 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: ag-mybatis-generator
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/ag_admin?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+
+#网关用户校验
+jwt:
+  token-header: access-token
+  pub-key:
+#    path: /Users/ace/git/ag-parent/ag-zuul/src/main/resources/jwt/pub.key
+    path: D:\workspace-idea\ag-parent\ag-mybatis-generator\src\main\resources\jwt\pub.key
+
+
+#服务间的校验
+client:
+  id: ag-mybatis-generator
+  secret: 123456
+  token-header: client-token
+  pub-key:
+    path: D:\workspace-idea\ag-parent\ag-uc\src\main\resources\client\pub.key
+
+mybatis:
+  basepackage: com.github.wxiaoqi.learning.agmybatisgenerator.mapper
+  xmlLocation: classpath:mapper/**/*.xml
